@@ -1,5 +1,4 @@
 import Ember  from 'ember';
-import Integration from 'freshdesk/constants/integrations/integration';
 
 const {
   Service,
@@ -21,7 +20,6 @@ export default Service.extend({
   accessTokenRenewalUrl: null,
   callbacksAwaitingAccessToken: [],
   httpProxyUrl: null,
-  // TODO: Once the admin setting is changed compute it
   installedApps: computed(function() {
     return get(this, 'store').findAll('installed-application');
   }),
@@ -37,14 +35,6 @@ export default Service.extend({
     set(this, 'appName', options.app_name || 'Integrated Application');
     set(this, 'accessTokenRenewalUrl', options.is_customer ? HTTP_REQUEST_URL.accessTokenForCustomer : HTTP_REQUEST_URL.accessToken);
     set(this, 'httpProxyUrl', options.is_customer ? HTTP_REQUEST_URL.requestProxyForCustomer : HTTP_REQUEST_URL.requestProxy);
-  },
-
-  appendDefaultHeaders(headers) {
-    if (!headers) {
-      headers = {};
-    }
-    headers['X-CSRF-Token'] = get(this, 'currentAccount').getCsrfToken();
-    return headers;
   },
 
   
