@@ -1,0 +1,12 @@
+{
+  "v": 2,
+  "parserID": "babel-eslint",
+  "toolID": "jscodeshift",
+  "settings": {
+    "babel-eslint": null
+  },
+  "versions": {
+    "babel-eslint": "7.2.3",
+    "jscodeshift": "0.6.3"
+  }
+}
